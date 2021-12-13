@@ -50,6 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 35
               ),
             ),
+            const Divider(color: Colors.blueAccent, thickness: 5),
+            const Text("Switch", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21)),
             Switch(
                 value: _switchChoice,
                 onChanged: (value){
@@ -58,7 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   });
                 }
             ),
-            Text(_switchChoice ? "On" : "Off")
+            Text(_switchChoice ? "On" : "Off"),
+            const Divider(color: Colors.blueAccent, thickness: 5),
+            const Text("Radio", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21)),
           ],
         ),
       ),
