@@ -37,6 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
   ChoicesList _radioChoice = ChoicesList.plane;
   Icon _radioIcon = const Icon(Icons.flight);
 
+  Map _mapTransport = {
+    ChoicesList.car: false,
+    ChoicesList.plane: false,
+    ChoicesList.boat: false
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,6 +122,66 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             _radioIcon,
+            const Divider(color: Colors.blueAccent, thickness: 5),
+            const Text("Checkbox", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Checkbox(
+                    value: _mapTransport[ChoicesList.car],
+                    onChanged: (value) {
+                      setState(() {
+                        _mapTransport[ChoicesList.car] = value;
+                      });
+                    }
+                ),
+                Text(
+                  "Car",
+                  style: _mapTransport[ChoicesList.car] ? const TextStyle(fontWeight: FontWeight.bold) : const TextStyle(),
+                ),
+                Checkbox(
+                    value: _mapTransport[ChoicesList.plane],
+                    onChanged: (value) {
+                      setState(() {
+                        _mapTransport[ChoicesList.plane] = value;
+                      });
+                    }
+                ),
+                Text(
+                  "Plane",
+                  style: _mapTransport[ChoicesList.plane] ? const TextStyle(fontWeight: FontWeight.bold) : const TextStyle(),
+                ),
+                Checkbox(
+                    value: _mapTransport[ChoicesList.boat],
+                    onChanged: (value) {
+                      setState(() {
+                        _mapTransport[ChoicesList.boat] = value;
+                      });
+                    }
+                ),
+                Text(
+                  "Boat",
+                  style: _mapTransport[ChoicesList.boat] ? const TextStyle(fontWeight: FontWeight.bold) : const TextStyle(),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.directions_car,
+                  color: _mapTransport[ChoicesList.car] ? Colors.teal : Colors.grey,
+                ),
+                Icon(
+                  Icons.flight,
+                  color: _mapTransport[ChoicesList.plane] ? Colors.teal : Colors.grey,
+                ),
+                Icon(
+                  Icons.directions_boat,
+                  color: _mapTransport[ChoicesList.boat] ? Colors.teal : Colors.grey,
+                ),
+              ],
+            ),
           ],
         ),
       ),
