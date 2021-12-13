@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './choice_list.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -32,6 +34,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   bool _switchChoice = false;
+  ChoicesList _radioChoice = ChoicesList.plane;
+  Icon _radioIcon = const Icon(Icons.flight);
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +67,55 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(_switchChoice ? "On" : "Off"),
             const Divider(color: Colors.blueAccent, thickness: 5),
             const Text("Radio", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Radio(
+                    value: ChoicesList.car,
+                    groupValue: _radioChoice,
+                    onChanged: (value) {
+                      setState(() {
+                        _radioChoice = ChoicesList.car;
+                        _radioIcon = const Icon(Icons.directions_car);
+                      });
+                    }
+                ),
+                Text(
+                  "Car",
+                  style: _radioChoice == ChoicesList.car ? const TextStyle(fontWeight: FontWeight.bold) : const TextStyle(),
+                  //style: _radioChoice == ChoicesList.car ? const TextStyle(fontWeight: FontWeight.bold) : const TextStyle(),
+                ),
+                Radio(
+                    value: ChoicesList.plane,
+                    groupValue: _radioChoice,
+                    onChanged: (value) {
+                      setState(() {
+                        _radioChoice = ChoicesList.plane;
+                        _radioIcon = const Icon(Icons.flight);
+                      });
+                    }
+                ),
+                Text(
+                    "Plane",
+                  style: _radioChoice == ChoicesList.plane ? const TextStyle(fontWeight: FontWeight.bold) : const TextStyle(),
+                ),
+                Radio(
+                    value: ChoicesList.boat,
+                    groupValue: _radioChoice,
+                    onChanged: (value) {
+                      setState(() {
+                        _radioChoice = ChoicesList.boat;
+                        _radioIcon = const Icon(Icons.directions_boat);
+                      });
+                    }
+                ),
+                Text(
+                    "Boat",
+                  style: _radioChoice == ChoicesList.boat ? const TextStyle(fontWeight: FontWeight.bold) : const TextStyle(),
+                ),
+              ],
+            ),
+            _radioIcon,
           ],
         ),
       ),

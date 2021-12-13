@@ -1,4 +1,4 @@
-enum choicesList {
+enum ChoicesList {
   plane,
   boat,
   car
