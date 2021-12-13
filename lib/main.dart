@@ -31,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  bool _switchChoice = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,8 +44,21 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Form choices examples',
+              'User\'s choice',
+              style: TextStyle(
+                  color: Colors.blueAccent,
+                  fontSize: 35
+              ),
             ),
+            Switch(
+                value: _switchChoice,
+                onChanged: (value){
+                  setState(() {
+                    _switchChoice = value;
+                  });
+                }
+            ),
+            Text(_switchChoice ? "On" : "Off")
           ],
         ),
       ),
