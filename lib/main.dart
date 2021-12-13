@@ -37,11 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
   ChoicesList _radioChoice = ChoicesList.plane;
   Icon _radioIcon = const Icon(Icons.flight);
 
-  Map _mapTransport = {
+  final Map _mapTransport = {
     ChoicesList.car: false,
     ChoicesList.plane: false,
     ChoicesList.boat: false
   };
+
+  double _sliderChoice = 5.0;
 
   @override
   Widget build(BuildContext context) {
@@ -181,6 +183,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: _mapTransport[ChoicesList.boat] ? Colors.teal : Colors.grey,
                 ),
               ],
+            ),
+            const Divider(color: Colors.blueAccent, thickness: 5),
+            const Text("Slider", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21)),
+            Slider(
+              value: _sliderChoice,
+              label: "$_sliderChoice",
+              min: 0.0,
+              max: 10.0,
+              divisions: 10,
+              onChanged: (value) {
+                setState(() {
+                  _sliderChoice = value;
+                });
+              },
+            ),
+            Text(
+              "Slider value: $_sliderChoice",
+              style: TextStyle(color: _sliderChoice > 5 ? Colors.red : Colors.teal),
             ),
           ],
         ),
